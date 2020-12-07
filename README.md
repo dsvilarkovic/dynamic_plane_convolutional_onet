@@ -113,7 +113,7 @@ To run with similarity loss you should put the `training.similarity = True` On t
 
 #### **Positional Encoding**
 
-To enable the positional encoding put `model.encoder_kwargs.pos_encoding=True` . 
+To enable the positional encoding put `model.encoder_kwargs.pos_encoding=True` and `model.decoder_kwargs.pos_encoding=True`. 
 
 
 ### **Rotation augmentation**

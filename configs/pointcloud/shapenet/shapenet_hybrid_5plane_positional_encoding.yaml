@@ -30,7 +30,7 @@ model:
   decoder_kwargs:
     sample_mode: bilinear # bilinear / nearest
     hidden_size: 32
-    pos_encoding: False
+    pos_encoding: True
   c_dim: 32
   z_dim: 0
 training:
