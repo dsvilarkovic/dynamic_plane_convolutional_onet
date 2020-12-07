@@ -1,0 +1,7 @@
+.idea
+/src/build
+.cpp
+.ply
+.xyz
+/build
+.egg-info

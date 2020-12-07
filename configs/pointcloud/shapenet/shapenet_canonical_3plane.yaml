@@ -1,0 +1,60 @@
+method: dynamic_planes_conv_onet
+data:
+  input_type: pointcloud
+  classes: null
+  input_type: pointcloud
+  path: data/ShapeNet
+  watertight_path: data/watertight
+  pointcloud_n: 3000
+  pointcloud_noise: 0.005
+  points_subsample: 2048
+  points_file: points.npz
+  points_iou_file: points.npz
+  # points_unpackbits: false
+  voxels_file: null
+  padding: 0.1
+model:
+  encoder_latent: null
+  decoder: simple_local
+  encoder: local_pool
+  encoder_kwargs:
+    hidden_dim: 32
+    plane_resolution: 64
+    plane_type: ['xz', 'xy', 'yz']
+    unet: True
+    unet_kwargs:
+      depth: 4
+      merge_mode: concat
+      start_filts: 32
+    pos_encoding: False
+  decoder_kwargs:
+    sample_mode: bilinear # bilinear / nearest
+    hidden_size: 32
+    pos_encoding: False
+  c_dim: 32
+  z_dim: 0
+training:
+  out_dir: out/pointcloud/shapenet_canonical_3plane
+  batch_size: 2
+  similarity: False
+  model_selection_metric: iou
+  model_selection_mode: maximize
+  print_every: 1000
+  visualize_every: 10000
+  validate_every: 10000
+  checkpoint_every: 2000
+  backup_every: 10000
+  n_workers: 8
+  n_workers_val: 4
+test:
+  threshold: 0.2
+  eval_mesh: true
+  eval_pointcloud: false
+  model_file: model_best.pt
+generation:
+  batch_size: 100000
+  vis_n_outputs: 2
+  # resolution_0: 64
+  refine: false
+  n_x: 128
+  n_z: 1

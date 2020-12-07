@@ -1,0 +1,10 @@
+inherit_from: configs/pointcloud/pretrained/shapenet_dynamic_7plane.yaml
+test:
+  model_file: /cluster/scratch/dsvilarko/dynamic_plane_convolutional_onet/out/pointcloud/shapenet_dynamic_7plane/model_best.pt
+model : 
+  encoder_kwargs:
+    hidden_dim: 32
+    n_channels: 7
+generation:
+  generation_dir: generation_7plane_15_degrees
+degrees: 15

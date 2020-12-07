@@ -1,0 +1,27 @@
+inherit_from: configs/pointcloud/pretrained/shapenet_dynamic_7plane.yaml
+model:
+  encoder_latent: null
+  decoder: dynamic_simple_local
+  encoder: dynamic_pointnet_local_pool
+  encoder_kwargs:
+    hidden_dim: 32
+    plane_resolution: 64
+    unet: True
+    unet_kwargs:
+      depth: 4
+      merge_mode: concat
+      start_filts: 32
+    n_channels: 7
+    pos_encoding: True
+  decoder_kwargs:
+    sample_mode: bilinear # bilinear / nearest
+    hidden_size: 32
+    pos_encoding: True
+  c_dim: 32
+  z_dim: 0
+generation:
+  generation_dir: generation_tryout
+test:
+  model_file: https://polybox.ethz.ch/index.php/s/pezIk19a6waiCyo/download
+
+  
