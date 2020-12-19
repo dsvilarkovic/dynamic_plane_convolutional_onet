@@ -33,9 +33,6 @@ class LocalPoolPointnet(nn.Module):
         self.blocks = nn.ModuleList([
             ResnetBlockFC(2 * hidden_dim, hidden_dim) for i in range(n_blocks)
         ])
-        # self.block_0 = ResnetBlockFC(2*hidden_dim, hidden_dim)
-        # self.block_1 = ResnetBlockFC(2*hidden_dim, hidden_dim)
-        # self.block_2 = ResnetBlockFC(2*hidden_dim, c_dim)
         self.fc_c = nn.Linear(hidden_dim, c_dim)
 
         self.actvn = nn.ReLU()
@@ -125,8 +122,6 @@ class LocalPoolPointnet(nn.Module):
             net = self.fc_pos(p)
         ##################
 
-        # net = self.fc_pos(p)
-
         net = self.blocks[0](net)
         for block in self.blocks[1:]:
             pooled = self.pool_local(coord, index, net)
@@ -181,9 +176,6 @@ class DynamicLocalPoolPointnet(nn.Module):
         self.blocks = nn.ModuleList([
             ResnetBlockFC(2 * hidden_dim, hidden_dim) for i in range(n_blocks)
         ])
-        # self.block_0 = ResnetBlockFC(2*hidden_dim, hidden_dim)
-        # self.block_1 = ResnetBlockFC(2*hidden_dim, hidden_dim)
-        # self.block_2 = ResnetBlockFC(2*hidden_dim, c_dim)
         self.fc_c = nn.Linear(hidden_dim, c_dim)
         planenet_hidden_dim = hidden_dim
         self.fc_plane_net = FCPlanenet(n_dim=dim, hidden_dim=hidden_dim)
@@ -199,7 +191,6 @@ class DynamicLocalPoolPointnet(nn.Module):
         ])
 
         self.actvn = nn.ReLU()
-        # self.pool = maxpool
         self.hidden_dim = hidden_dim
 
         if unet:
