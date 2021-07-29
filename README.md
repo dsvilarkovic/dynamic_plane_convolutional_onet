@@ -48,12 +48,12 @@ In this paper, we consider the ShapeNet and synthetic room dataset:
 You can download the dataset (73.4 GB) by running the [script](https://github.com/autonomousvision/occupancy_networks#preprocessed-data) from Occupancy Networks. After, you should have the dataset in `data/ShapeNet` folder.
 Or by calling the command 
 ```
-bash src/scripts/download_shape_net_data.sh
+bash scripts/download_shape_net_data.sh
 ```
 ### Synthetic room 
 You can download the synthetic room dataset by calling the command
 ```
-bash src/scripts/download_room_data.sh
+bash scripts/download_room_data.sh
 ```
 If you use this dataset, please cite [Convolutional Occupancy Networks](https://pengsongyou.github.io/conv_onet) paper.
 
